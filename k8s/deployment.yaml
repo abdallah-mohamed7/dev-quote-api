@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-quote-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dev-quote-api
+  template:
+    metadata:
+      labels:
+        app: dev-quote-api
+    spec:
+      containers:
+        - name: dev-quote-api
+          image: abdallahmohamed7/dev-quote-api:latest
+          ports:
+            - containerPort: 8080
