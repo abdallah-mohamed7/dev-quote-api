@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-quote-api
+  labels:
+    app: dev-quote-api
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: dev-quote-api
+  template:
+    metadata:
+      labels:
+        app: dev-quote-api
+    spec:
+      containers:
+        - name: dev-quote-api
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}

@@ -1,0 +1,9 @@
+replicaCount: 3
+
+image:
+  repository: abdallahmohamed7/dev-quote-api
+  tag: latest
+
+service:
+  type: NodePort
+  port: 8080
